@@ -1,0 +1,22 @@
+backend:
+  name: git-gateway
+  branch: master # Branch to update (optional; defaults to master)
+  repo: coronavirusfactcheck/coronavirusfactcheck-web
+  site_domain: coronavirusfactcheck.net
+
+local_backend: true
+
+publish_mode: editorial_workflow
+media_folder: "source/_posts/images/uploads" # Media files will be stored in the repo under this path
+public_folder: "/img/uploads" # The src attribute for uploaded media will begin with /img/uploads
+collections:
+  - name: "post" # Used in routes, e.g., /admin/collections/post
+    label: "post" # Used in the UI
+    folder: "source/_posts" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "title", name: "title", widget: "string"}
+      - {label: "date", name: "date", widget: "datetime"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
